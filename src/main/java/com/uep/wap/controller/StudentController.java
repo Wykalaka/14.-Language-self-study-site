@@ -32,6 +32,14 @@ public class StudentController {
         return "Students added!";
     }
 
+    //metoda do dodawania User
+    @PostMapping(path = "/users")
+    public String addUser(@RequestBody StudentDTO studentDTO){
+        studentsService.addUser(studentDTO);
+        return "User added!";
+    }
+
+
     //metoda do aktualizowwania studenta
     @PutMapping(path = "/students")
     public String updateStudents(@RequestBody StudentDTO studentDTO){

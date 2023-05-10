@@ -23,6 +23,10 @@ public class User {
     @JoinColumn(name = "role_id")
     private Role role;
 
+    @OneToMany
+    @JoinColumn(name = "u_id")
+    private List<Started_Course> started_courses;
+
     // Getters and Setters
     public int getU_id() {
         return u_id;
@@ -72,6 +76,22 @@ public class User {
         this.password = password;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public List<Started_Course> getStarted_courses() {
+        return started_courses;
+    }
+
+    public void setStarted_courses(List<Started_Course> started_courses) {
+        this.started_courses = started_courses;
+    }
+
     public User( int u_id, String first_Name, String last_Name, Date date_of_birth, String e_mail, String password) {
         this.u_id = u_id;
         this.first_Name = first_Name;
@@ -79,6 +99,10 @@ public class User {
         this.date_of_birth = date_of_birth;
         this.e_mail = e_mail;
         this.password = password;
+    }
+
+    public User(){
+
     }
 }
 

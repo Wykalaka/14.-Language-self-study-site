@@ -14,9 +14,9 @@ public class Started_Course {
 
     private float completion;
 
-    //@ManyToOne
-    //@JoinColumn(name = "c_id")
-    //private Course course;
+    @ManyToOne
+    @JoinColumn(name = "c_id")
+    private Course course;
 
     @ManyToOne
     @JoinColumn(name = "u_id")

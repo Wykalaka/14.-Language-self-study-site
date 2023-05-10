@@ -34,4 +34,7 @@ public class StudentsService {
         System.out.println("Students updated!");
     }
 
+    public void addUser(StudentDTO studentDTO) {
+
+    }
 }
