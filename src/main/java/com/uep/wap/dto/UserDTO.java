@@ -1,26 +1,17 @@
 package com.uep.wap.dto;
 
 import java.util.Date;
+import java.util.List;
 
 public class UserDTO {
-
     private int u_id;
     private String first_Name;
     private String last_Name;
     private Date date_of_birth;
     private String e_mail;
-
-    // Constructors
-    public UserDTO() {
-    }
-
-    public UserDTO(int u_id, String first_Name, String last_Name, Date date_of_birth, String e_mail) {
-        this.u_id = u_id;
-        this.first_Name = first_Name;
-        this.last_Name = last_Name;
-        this.date_of_birth = date_of_birth;
-        this.e_mail = e_mail;
-    }
+    private String password;
+    private int role_id;  // Assuming you only need the role_id in the DTO
+    private List<Integer> started_course_ids;  // Assuming you only need the course IDs in the DTO
 
     // Getters and Setters
     public int getU_id() {
@@ -62,4 +53,29 @@ public class UserDTO {
     public void setE_mail(String e_mail) {
         this.e_mail = e_mail;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getRole_id() {
+        return role_id;
+    }
+
+    public void setRole_id(int role_id) {
+        this.role_id = role_id;
+    }
+
+    public List<Integer> getStarted_course_ids() {
+        return started_course_ids;
+    }
+
+    public void setStarted_course_ids(List<Integer> started_course_ids) {
+        this.started_course_ids = started_course_ids;
+    }
 }
+
