@@ -33,7 +33,6 @@ public class StudentsService {
         studentRepository.save(student);
         System.out.println("Students updated!");
     }
-
     public void addUser(StudentDTO studentDTO) {
 
     }

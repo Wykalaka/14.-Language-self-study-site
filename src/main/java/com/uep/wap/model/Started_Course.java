@@ -54,5 +54,22 @@ public class Started_Course {
     public void setCompletion(float completion) {
         this.completion = completion;
     }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
+
 
