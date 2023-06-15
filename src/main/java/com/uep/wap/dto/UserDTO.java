@@ -10,8 +10,8 @@ public class UserDTO {
     private Date date_of_birth;
     private String e_mail;
     private String password;
-    private int role_id;  // Assuming you only need the role_id in the DTO
-    private List<Integer> started_course_ids;  // Assuming you only need the course IDs in the DTO
+    private int role_id;
+    private List<Integer> started_course_ids;
 
     // Getters and Setters
     public int getU_id() {

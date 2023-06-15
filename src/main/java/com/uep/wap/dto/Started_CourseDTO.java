@@ -5,15 +5,19 @@ public class Started_CourseDTO {
     private int correctly;
     private int incorrectly;
     private float completion;
+    private int u_id;  // User foreign key
+    private int c_id;  // Course foreign key
 
     public Started_CourseDTO() {
     }
 
-    public Started_CourseDTO(int sc_id, int correctly, int incorrectly, float completion) {
+    public Started_CourseDTO(int sc_id, int correctly, int incorrectly, float completion, int userId, int courseId) {
         this.sc_id = sc_id;
         this.correctly = correctly;
         this.incorrectly = incorrectly;
         this.completion = completion;
+        this.u_id = userId;
+        this.c_id = courseId;
     }
 
     // Getters and Setters
@@ -48,5 +52,20 @@ public class Started_CourseDTO {
     public void setCompletion(float completion) {
         this.completion = completion;
     }
-}
 
+    public int getUserId() {
+        return u_id;
+    }
+
+    public void setUserId(int userId) {
+        this.u_id = userId;
+    }
+
+    public int getCourseId() {
+        return c_id;
+    }
+
+    public void setCourseId(int courseId) {
+        this.c_id = courseId;
+    }
+}

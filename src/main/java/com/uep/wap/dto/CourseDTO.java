@@ -8,16 +8,6 @@ public class CourseDTO {
     private List<Integer> startedCourseIds;
     private List<Integer> sectionIds;
 
-    public CourseDTO() {
-    }
-
-    public CourseDTO(int c_id, String language, List<Integer> startedCourseIds, List<Integer> sectionIds) {
-        this.c_id = c_id;
-        this.language = language;
-        this.startedCourseIds = startedCourseIds;
-        this.sectionIds = sectionIds;
-    }
-
     // Getters and Setters
     public int getC_id() {
         return c_id;
