@@ -1,5 +1,7 @@
 package com.uep.wap.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,9 +13,11 @@ public class Section {
 
     private String proficiency;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "section", cascade = CascadeType.ALL)
     private List<Question> questions;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "c_id")
     private Course course;
@@ -41,6 +45,14 @@ public class Section {
 
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
 }

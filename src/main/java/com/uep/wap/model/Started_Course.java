@@ -1,5 +1,7 @@
 package com.uep.wap.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,6 +20,7 @@ public class Started_Course {
     @JoinColumn(name = "c_id")
     private Course course;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "u_id")
     private User user;

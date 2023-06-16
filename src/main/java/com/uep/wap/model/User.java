@@ -1,4 +1,6 @@
 package com.uep.wap.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -23,6 +25,7 @@ public class User {
     @JoinColumn(name = "role_id")
     private Role role;
 
+    @JsonIgnore
     @OneToMany
     @JoinColumn(name = "u_id")
     private List<Started_Course> started_courses;

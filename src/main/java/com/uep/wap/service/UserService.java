@@ -16,8 +16,14 @@ import java.util.List;
 
 @Service
 public class UserService {
+    @Autowired
     private final UserRepository userRepository;
+
+    @Autowired
     private final RoleRepository roleRepository;
+
+
+    @Autowired
     private final CourseRepository courseRepository;
 
     public UserService(UserRepository userRepository, RoleRepository roleRepository, CourseRepository courseRepository) {

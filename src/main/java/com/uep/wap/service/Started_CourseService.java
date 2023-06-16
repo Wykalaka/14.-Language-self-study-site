@@ -16,7 +16,9 @@ public class Started_CourseService {
     @Autowired
     private Started_CourseRepository started_courseRepository;
 
+    @Autowired
     private UserRepository userRepository;
+    @Autowired
     private CourseRepository courseRepository;
 
     public void addStarted_Course(Started_CourseDTO started_courseDTO) {

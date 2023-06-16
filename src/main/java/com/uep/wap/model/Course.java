@@ -1,5 +1,7 @@
 package com.uep.wap.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,6 +13,7 @@ public class Course {
 
     private String language;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private List<Started_Course> startedCourses;
 

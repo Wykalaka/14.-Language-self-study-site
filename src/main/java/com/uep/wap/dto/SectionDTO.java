@@ -4,12 +4,13 @@ public class SectionDTO {
     private int s_id;
     private String proficiency;
 
-    public SectionDTO() {
-    }
+    private int c_id;
 
-    public SectionDTO(int s_id, String proficiency) {
+
+    public SectionDTO(int s_id, String proficiency, int c_id) {
         this.s_id = s_id;
         this.proficiency = proficiency;
+        this.c_id = c_id;
     }
 
     // Getters and Setters
@@ -27,6 +28,14 @@ public class SectionDTO {
 
     public void setProficiency(String proficiency) {
         this.proficiency = proficiency;
+    }
+
+    public int getC_id() {
+        return c_id;
+    }
+
+    public void setC_id(int c_id) {
+        this.c_id = c_id;
     }
 }
 

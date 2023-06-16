@@ -1,5 +1,8 @@
 package com.uep.wap.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,6 +14,7 @@ public class Role {
 
     private String r_name;
 
+    @JsonIgnore //mogę to zmienić żeby pokazywało userów przypietych do roli
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
     private List<User> users;
 
