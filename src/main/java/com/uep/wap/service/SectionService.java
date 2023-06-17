@@ -39,6 +39,12 @@ public class SectionService {
         return sectionRepository.findAll();
     }
 
+    public Section getSection(Integer id) {
+        Section section = sectionRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Section not found with id: " + id));
+        return section;
+    }
+
     public void updateSection(SectionDTO sectionDTO) {
         Section section = sectionRepository.findById(sectionDTO.getS_id())
                 .orElseThrow(() -> new IllegalArgumentException("Section not found with id: " + sectionDTO.getS_id()));
@@ -51,5 +57,12 @@ public class SectionService {
 
         sectionRepository.save(section);
         System.out.println("Section updated!");
+    }
+
+    public void deleteSection(Integer id) {
+        Section section = sectionRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Section not found with id: " + id));
+        sectionRepository.delete(section);
+        System.out.println("Section deleted!");
     }
 }

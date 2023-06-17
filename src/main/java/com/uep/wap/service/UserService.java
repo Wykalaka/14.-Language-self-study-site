@@ -7,6 +7,7 @@ import com.uep.wap.model.Started_Course;
 import com.uep.wap.model.User;
 import com.uep.wap.repository.CourseRepository;
 import com.uep.wap.repository.RoleRepository;
+import com.uep.wap.repository.Started_CourseRepository;
 import com.uep.wap.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,10 +27,14 @@ public class UserService {
     @Autowired
     private final CourseRepository courseRepository;
 
-    public UserService(UserRepository userRepository, RoleRepository roleRepository, CourseRepository courseRepository) {
+    @Autowired
+    private final Started_CourseRepository startedCourseRepository;
+
+    public UserService(UserRepository userRepository, RoleRepository roleRepository, CourseRepository courseRepository, Started_CourseRepository startedCourseRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.courseRepository = courseRepository;
+        this.startedCourseRepository = startedCourseRepository;
     }
 
     public void addUser(UserDTO userDTO) {
@@ -54,7 +59,7 @@ public class UserService {
                 Started_Course startedCourse = new Started_Course();
                 startedCourse.setCourse(course);
                 startedCourse.setUser(user);
-                // Add startedCourse to the user's started_courses list
+                startedCourseRepository.save(startedCourse);
                 startedCourses.add(startedCourse);
             }
         }
@@ -66,6 +71,12 @@ public class UserService {
 
     public Iterable<User> getAllUsers() {
         return userRepository.findAll();
+    }
+
+    public User getUser(Integer id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("User not found with id: " + id));
+        return user;
     }
 
     public void updateUser(UserDTO userDTO) {
@@ -91,6 +102,7 @@ public class UserService {
                 Started_Course startedCourse = new Started_Course();
                 startedCourse.setCourse(course);
                 startedCourse.setUser(user);
+                startedCourseRepository.save(startedCourse);
                 startedCourses.add(startedCourse);
             }
         }
@@ -98,6 +110,31 @@ public class UserService {
 
         userRepository.save(user);
         System.out.println("User updated!");
+    }
+
+
+    public void deleteUser(Integer id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("User not found with id: " + id));
+        userRepository.delete(user);
+        System.out.println("User deleted!");
+    }
+
+    public void addCourseToUser(Integer userId, Integer startedCourseId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("User not found with id: " + userId));
+
+        Started_Course startedCourse = startedCourseRepository.findById(startedCourseId)
+                .orElseThrow(() -> new IllegalArgumentException("Started Course not found with id: " + startedCourseId));
+
+        startedCourse.setUser(user);
+
+        startedCourseRepository.save(startedCourse);
+
+        user.getStarted_courses().add(startedCourse);
+        userRepository.save(user);
+
+        System.out.println("Course added to user!");
     }
 }
 

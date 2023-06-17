@@ -36,4 +36,10 @@ public class StudentsService {
     public void addUser(StudentDTO studentDTO) {
 
     }
+
+    public void deleteStudent(Integer id) {
+        Student student = studentRepository.findById(id).get();
+        studentRepository.delete(student);
+        System.out.println("Students deleted!");
+    }
 }

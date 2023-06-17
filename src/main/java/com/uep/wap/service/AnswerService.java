@@ -34,6 +34,12 @@ public class AnswerService {
         return answerRepository.findAll();
     }
 
+    public Answer getAnswer(Integer id) {
+        Answer answer  = answerRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Answer not found with id: " + id));
+        return answer;
+    }
+
     public void updateAnswer(AnswerDTO answerDTO) {
         Answer answer = answerRepository.findById(answerDTO.getA_id())
                 .orElseThrow(() -> new IllegalArgumentException("Answer not found with id: " + answerDTO.getA_id()));
@@ -46,5 +52,12 @@ public class AnswerService {
 
         answerRepository.save(answer);
         System.out.println("Answer updated!");
+    }
+
+    public void deleteAnswer(Integer id) {
+        Answer answer = answerRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Answer not found with id: " + id));
+        answerRepository.delete(answer);
+        System.out.println("Answer deleted!");
     }
 }

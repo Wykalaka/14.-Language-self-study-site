@@ -28,11 +28,22 @@ public class CourseController {
         return courseService.getAllCourses();
     }
 
+    @GetMapping(path = "/{id}")
+    public Course getCourseById(@PathVariable("id") Integer id) {
+        return courseService.getCourse(id);
+    }
+
     @PutMapping(path = "/{id}")
     public String updateCourse(@PathVariable("id") Integer id, @RequestBody CourseDTO courseDTO) {
         courseDTO.setC_id(id);
         courseService.updateCourse(courseDTO);
         return "Course updated!";
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public String deleteCourse(@PathVariable("id") Integer id) {
+        courseService.deleteCourse(id);
+        return "Course deleted!";
     }
 }
 

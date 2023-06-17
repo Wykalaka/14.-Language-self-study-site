@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add User</title>
+    <meta charset="UTF-8">
+    <script>
+        function submitForm() {
+            let userForm = document.getElementById('userForm');
+            let xhr = new XMLHttpRequest();
+            let url = "http://localhost:8765/user/";
+
+            // Prepare the data
+            let data = {
+                first_Name: userForm.elements.namedItem('first_Name').value,
+                last_Name: userForm.elements.namedItem('last_Name').value,
+                date_of_birth: userForm.elements.namedItem('date_of_birth').value,
+                e_mail: userForm.elements.namedItem('e_mail').value,
+                password: userForm.elements.namedItem('password').value,
+                role_id: 4,
+                started_course_ids: []
+            };
+
+            // Send the request
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify(data));
+        }
+    </script>
+</head>
+<body>
+<h1>Dodaj użytkownika</h1>
+<form id="userForm">
+    <label for="first_Name">Imię:</label><br>
+    <input type="text" id="first_Name" name="first_Name"><br>
+    <label for="last_Name">Nazwisko:</label><br>
+    <input type="text" id="last_Name" name="last_Name"><br>
+    <label for="date_of_birth">Data urodzenia:</label><br>
+    <input type="date" id="date_of_birth" name="date_of_birth"><br>
+    <label for="e_mail">Email:</label><br>
+    <input type="email" id="e_mail" name="e_mail"><br>
+    <label for="password">Hasło:</label><br>
+    <input type="password" id="password" name="password"><br>
+    <input type="button" value="Dodaj" onclick="submitForm()">
+</form>
+</body>
+</html>

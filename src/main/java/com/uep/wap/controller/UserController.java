@@ -4,6 +4,7 @@ import com.uep.wap.dto.UserDTO;
 
 import com.uep.wap.model.User;
 import com.uep.wap.service.UserService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -27,11 +28,28 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+    @GetMapping(path = "/{id}")
+    public User getUserById(@PathVariable("id") Integer id) {
+        return userService.getUser(id);
+    }
+
     @PutMapping(path = "/{id}")
     public String updateUser(@PathVariable("id") Integer id, @RequestBody UserDTO userDTO) {
         userDTO.setU_id(id);
         userService.updateUser(userDTO);
         return "User updated!";
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public String deleteUser(@PathVariable("id") Integer id) {
+        userService.deleteUser(id);
+        return "User deleted!";
+    }
+
+    @PostMapping("/users/{userId}/courses/{courseId}")
+    public ResponseEntity<String> addCourseToUser(@PathVariable Integer userId, @PathVariable Integer courseId) {
+        userService.addCourseToUser(userId, courseId);
+        return ResponseEntity.ok("Course added to user");
     }
 }
 

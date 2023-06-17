@@ -61,6 +61,12 @@ public class CourseService {
         return courseRepository.findAll();
     }
 
+    public Course getCourse(Integer id) {
+        Course course  = courseRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Course not found with id: " + id));
+        return course;
+    }
+
     public void updateCourse(CourseDTO courseDTO) {
         Course course = courseRepository.findById(courseDTO.getC_id())
                 .orElseThrow(() -> new IllegalArgumentException("Course not found with id: " + courseDTO.getC_id()));
@@ -78,6 +84,13 @@ public class CourseService {
 
         courseRepository.save(course);
         System.out.println("Course updated!");
+    }
+
+    public void deleteCourse(Integer id) {
+        Course course = courseRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Course not found with id: " + id));
+        courseRepository.delete(course);
+        System.out.println("Course deleted!");
     }
 }
 

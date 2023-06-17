@@ -48,6 +48,12 @@ public class QuestionService {
         return questionRepository.findAll();
     }
 
+    public Question getQuestion(Integer id) {
+        Question question  = questionRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Question not found with id: " + id));
+        return question;
+    }
+
     public void updateQuestion(QuestionDTO questionDTO) {
         Question question = questionRepository.findById(questionDTO.getQ_id())
                 .orElseThrow(() -> new IllegalArgumentException("Question not found with id: " + questionDTO.getQ_id()));
@@ -67,4 +73,13 @@ public class QuestionService {
         questionRepository.save(question);
         System.out.println("Question updated!");
     }
+
+    public void deleteQuestion(Integer id) {
+        Question question = questionRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Question not found with id: " + id));
+        questionRepository.delete(question);
+        System.out.println("Question deleted!");
     }
+
+
+}

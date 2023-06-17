@@ -26,10 +26,21 @@ public class SectionController {
         return sectionService.getAllSections();
     }
 
+    @GetMapping(path = "/{id}")
+    public com.uep.wap.model.Section getSectionById(@PathVariable("id") Integer id) {
+        return sectionService.getSection(id);
+    }
+
     @PutMapping(path = "/{id}")
     public String updateSection(@PathVariable("id") Integer id, @RequestBody SectionDTO sectionDTO) {
         sectionDTO.setS_id(id);
         sectionService.updateSection(sectionDTO);
         return "Section updated!";
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public String deleteSection(@PathVariable("id") Integer id) {
+        sectionService.deleteSection(id);
+        return "Section deleted!";
     }
 }

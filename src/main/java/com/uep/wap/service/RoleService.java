@@ -22,11 +22,23 @@ public class RoleService {
         return roleRepository.findAll();
     }
 
+    public Role getRole(Integer id) {
+        Role role = roleRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Role not found with id: " + id));
+        return role;
+    }
+
     public void updateRole(RoleDTO roleDTO) {
         Role role = roleRepository.findById(roleDTO.getR_id()).orElseThrow(() -> new IllegalArgumentException("Role not found with id: " + roleDTO.getR_id()));
         role.setR_name(roleDTO.getR_name());
         roleRepository.save(role);
         System.out.println("Role updated!");
     }
+
+    public void deleteRole(Integer id) {
+        Role role = roleRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Role not found with id: " + id));
+        roleRepository.delete(role);
+        System.out.println("Role deleted!");
+    }
+
 
 }

@@ -43,6 +43,12 @@ public class Started_CourseService {
         return started_courseRepository.findAll();
     }
 
+    public Started_Course getStarted_Course(Integer id) {
+        Started_Course started_course = started_courseRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Started_Course not found with id: " + id));
+        return started_course;
+    }
+
     public void updateStarted_Course(Started_CourseDTO started_courseDTO) {
         Started_Course started_course = started_courseRepository.findById(started_courseDTO.getSc_id()).orElseThrow(() -> new IllegalArgumentException("Started_Course not found with id: " + started_courseDTO.getSc_id()));
         started_course.setCompletion(started_courseDTO.getCompletion());
@@ -50,5 +56,11 @@ public class Started_CourseService {
         started_course.setIncorrectly(started_courseDTO.getIncorrectly());
         started_courseRepository.save(started_course);
         System.out.println("Started_Course updated!");
+    }
+
+    public void deleteStarted_Course(Integer id) {
+        Started_Course started_course = started_courseRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Started_Course not found with id: " + id));
+        started_courseRepository.delete(started_course);
+        System.out.println("Started_Course deleted!");
     }
 }

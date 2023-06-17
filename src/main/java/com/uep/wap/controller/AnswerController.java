@@ -25,10 +25,21 @@ public class AnswerController {
         return answerService.getAllAnswers();
     }
 
+    @GetMapping(path = "/{id}")
+    public Answer getAnswerById(@PathVariable("id") Integer id) {
+        return answerService.getAnswer(id);
+    }
+
     @PutMapping(path = "/{id}")
     public String updateAnswer(@PathVariable("id") Integer id, @RequestBody AnswerDTO answerDTO) {
         answerDTO.setA_id(id);
         answerService.updateAnswer(answerDTO);
         return "Answer updated!";
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public String deleteAnswer(@PathVariable("id") Integer id) {
+        answerService.deleteAnswer(id);
+        return "Answer deleted!";
     }
 }

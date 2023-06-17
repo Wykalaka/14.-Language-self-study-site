@@ -26,11 +26,22 @@ public class QuestionController {
         return questionService.getAllQuestions();
     }
 
+    @GetMapping(path = "/{id}")
+    public Question getQuestionById(@PathVariable("id") Integer id) {
+        return questionService.getQuestion(id);
+    }
+
     @PutMapping(path = "/{id}")
     public String updateQuestion(@PathVariable("id") Integer id, @RequestBody QuestionDTO questionDTO) {
         questionDTO.setQ_id(id);
         questionService.updateQuestion(questionDTO);
         return "Question updated!";
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public String deleteQuestion(@PathVariable("id") Integer id) {
+        questionService.deleteQuestion(id);
+        return "Question deleted!";
     }
 
 
