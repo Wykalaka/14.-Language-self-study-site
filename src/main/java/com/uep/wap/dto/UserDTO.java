@@ -8,7 +8,7 @@ public class UserDTO {
     private String first_Name;
     private String last_Name;
     private Date date_of_birth;
-    private String e_mail;
+    private String email;
     private String password;
     private int role_id;
     private List<Integer> started_course_ids;
@@ -46,12 +46,12 @@ public class UserDTO {
         this.date_of_birth = date_of_birth;
     }
 
-    public String getE_mail() {
-        return e_mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setE_mail(String e_mail) {
-        this.e_mail = e_mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {

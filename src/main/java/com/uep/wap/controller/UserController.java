@@ -4,6 +4,7 @@ import com.uep.wap.dto.UserDTO;
 
 import com.uep.wap.model.User;
 import com.uep.wap.service.UserService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -50,6 +51,17 @@ public class UserController {
     public ResponseEntity<String> addCourseToUser(@PathVariable Integer userId, @PathVariable Integer courseId) {
         userService.addCourseToUser(userId, courseId);
         return ResponseEntity.ok("Course added to user");
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<User> loginUser(@RequestBody User loginUser) {
+        User foundUser = userService.findByEmail(loginUser.getEmail());
+
+        if (foundUser != null && loginUser.getPassword().equals(foundUser.getPassword())) {
+            return ResponseEntity.ok(foundUser);
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
     }
 }
 

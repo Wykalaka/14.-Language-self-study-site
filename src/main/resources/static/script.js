@@ -19,7 +19,7 @@ document.getElementById("registrationForm").addEventListener("submit", function(
     first_Name: firstName,
     last_Name: lastName,
     date_of_birth: dob,
-    e_mail: email,
+    email: email,
     password: password,
     role_id: 4,
     started_course_ids: []

@@ -17,7 +17,8 @@ public class User {
 
     private Date date_of_birth;
 
-    private String e_mail;
+    @Column(name = "e_mail")
+    private String email;
 
     private String password;
 
@@ -63,12 +64,12 @@ public class User {
         this.date_of_birth = date_of_birth;
     }
 
-    public String getE_mail() {
-        return e_mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setE_mail(String e_mail) {
-        this.e_mail = e_mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -95,12 +96,12 @@ public class User {
         this.started_courses = started_courses;
     }
 
-    public User( int u_id, String first_Name, String last_Name, Date date_of_birth, String e_mail, String password) {
+    public User( int u_id, String first_Name, String last_Name, Date date_of_birth, String email, String password) {
         this.u_id = u_id;
         this.first_Name = first_Name;
         this.last_Name = last_Name;
         this.date_of_birth = date_of_birth;
-        this.e_mail = e_mail;
+        this.email = email;
         this.password = password;
     }
 

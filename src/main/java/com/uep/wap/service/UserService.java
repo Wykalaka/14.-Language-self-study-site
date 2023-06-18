@@ -42,7 +42,7 @@ public class UserService {
         user.setFirst_Name(userDTO.getFirst_Name());
         user.setLast_Name(userDTO.getLast_Name());
         user.setDate_of_birth(userDTO.getDate_of_birth());
-        user.setE_mail(userDTO.getE_mail());
+        user.setEmail(userDTO.getEmail());
         user.setPassword(userDTO.getPassword());
 
         // Set Role
@@ -85,7 +85,7 @@ public class UserService {
         user.setFirst_Name(userDTO.getFirst_Name());
         user.setLast_Name(userDTO.getLast_Name());
         user.setDate_of_birth(userDTO.getDate_of_birth());
-        user.setE_mail(userDTO.getE_mail());
+        user.setEmail(userDTO.getEmail());
         user.setPassword(userDTO.getPassword());
 
         // Set Role
@@ -135,6 +135,10 @@ public class UserService {
         userRepository.save(user);
 
         System.out.println("Course added to user!");
+    }
+
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 }
 
