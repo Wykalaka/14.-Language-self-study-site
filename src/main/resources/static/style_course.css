@@ -1,0 +1,65 @@
+/* Pasek nawigacji */
+.header {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #333;
+  padding: 10px 0;
+}
+
+.header a {
+  color: white;
+  text-decoration: none;
+}
+
+.header a:hover {
+  color: #ddd;
+}
+
+/* Styl dla kursu */
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+#question-container {
+  text-align: center;
+  margin-bottom: 20px;
+  background-color: #293c4b;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+#answers {
+  display: flex;
+  justify-content: space-between;
+}
+
+.answer {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.answer label {
+  display: block;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+button {
+  display: block;
+  margin: 0 auto;
+}
