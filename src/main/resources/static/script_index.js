@@ -7,6 +7,27 @@ if (user) {
   userInfoDiv.textContent = 'Nie jesteś zalogowany.';
 }
 
+let loginLink = document.querySelector('.header a[href="login.html"]');
+let registerLink = document.querySelector('.header a[href="registration.html"]');
+
+if (user) {
+  // Jeżeli użytkownik jest zalogowany, zmieniamy tekst i funkcję linku logowania
+  loginLink.textContent = 'Wyloguj się';
+  loginLink.href = '#';  // usunięcie linku do strony logowania
+  loginLink.addEventListener('click', function(event) {
+    event.preventDefault(); // zapobiegamy domyślnej akcji kliknięcia linku
+    // Usuwamy informacje o zalogowanym użytkowniku z localStorage
+    localStorage.removeItem('user');
+    localStorage.removeItem('userRole');
+    // Przeładowujemy stronę, aby zmienić pasek nawigacyjny i resztę strony
+    location.reload();
+  });
+
+  // Usuwamy link do rejestracji
+  registerLink.remove();
+}
+
+
 const coursesSection = document.getElementById('courses-section');
 const newCoursesSection = document.getElementById('new-courses-section');
 
@@ -89,3 +110,13 @@ newCourses.forEach(course => {
   courseDiv.appendChild(startButton);
   newCoursesSection.appendChild(courseDiv);
 });
+
+let userRole = localStorage.getItem('userRole'); // pobieramy rolę zalogowanego użytkownika z localStorage
+if (userRole == 1) { // jeśli zalogowany użytkownik ma rolę z id 1
+  let navigationDiv = document.querySelector('.header');
+  let manageLink = document.createElement('a');
+  manageLink.href = "manage.html";
+  manageLink.textContent = "Zarządzaj";
+  navigationDiv.appendChild(manageLink);
+}
+

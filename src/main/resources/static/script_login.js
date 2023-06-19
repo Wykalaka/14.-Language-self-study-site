@@ -22,6 +22,7 @@ function loginUser(event) {
         })
         .then(data => {
             localStorage.setItem('user', data.email);
+            localStorage.setItem('userRole', data.role.r_id);
             window.location.href = 'index.html';
         })
         .catch((error) => {
