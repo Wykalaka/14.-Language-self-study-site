@@ -45,12 +45,10 @@ public class UserService {
         user.setEmail(userDTO.getEmail());
         user.setPassword(userDTO.getPassword());
 
-        // Set Role
         Role role = roleRepository.findById(userDTO.getRole_id())
                 .orElseThrow(() -> new IllegalArgumentException("Role not found with id: " + userDTO.getRole_id()));
         user.setRole(role);
 
-        // Set Started Courses
         List<Started_Course> startedCourses = new ArrayList<>();
         if (userDTO.getStarted_course_ids() != null) {
             for (Integer courseId : userDTO.getStarted_course_ids()) {
@@ -88,12 +86,10 @@ public class UserService {
         user.setEmail(userDTO.getEmail());
         user.setPassword(userDTO.getPassword());
 
-        // Set Role
         Role role = roleRepository.findById(userDTO.getRole_id())
                 .orElseThrow(() -> new IllegalArgumentException("Role not found with id: " + userDTO.getRole_id()));
         user.setRole(role);
 
-        // Set Started Courses
         List<Started_Course> startedCourses = new ArrayList<>();
         if (userDTO.getStarted_course_ids() != null) {
             for (Integer courseId : userDTO.getStarted_course_ids()) {

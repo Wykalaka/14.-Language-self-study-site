@@ -34,7 +34,7 @@ public class QuestionService {
                 .orElseThrow(() -> new IllegalArgumentException("Section not found with id: " + questionDTO.getSectionId()));
         question.setSection(section);
 
-        /*List<Answer> answers = questionDTO.getAnswerIds().stream()
+        /*Nie można podpiąć odp które jeszcze nie istniejaList<Answer> answers = questionDTO.getAnswerIds().stream()
                 .map(id -> answerRepository.findById(id)
                         .orElseThrow(() -> new IllegalArgumentException("Answer not found with id: " + id)))
                 .collect(Collectors.toList());
