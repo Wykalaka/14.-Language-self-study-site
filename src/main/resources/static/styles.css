@@ -53,7 +53,6 @@ button {
 button:hover {
   background-color: #45a049;
 }
-/* CSS dla sekcji kursów */
 .courses-section {
   margin-bottom: 20px;
 }
@@ -91,7 +90,6 @@ button:hover {
   background-color: #45a049;
 }
 
-/* CSS dla sekcji nowych kursów */
 .new-courses-section {
   margin-bottom: 20px;
 }

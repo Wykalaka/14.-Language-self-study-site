@@ -1,4 +1,4 @@
-// JavaScript
+
 let userInfoDiv = document.getElementById('user-info');
 let user = localStorage.getItem('user');
 if (user) {
@@ -21,7 +21,7 @@ if (user) {
   });
   registerLink.remove();
 }
-
+// Dodać link do zarządzania kursami dla admina
 let userRole = localStorage.getItem('userRole');
 if (userRole == 1) {
   let navigationDiv = document.querySelector('.header');

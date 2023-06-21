@@ -1,3 +1,4 @@
+////Nie radzi sobie z polskimi znakami
 document.getElementById('loginForm').addEventListener('submit', loginUser);
 
 function loginUser(event) {
