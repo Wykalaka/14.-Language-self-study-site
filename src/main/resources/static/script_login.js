@@ -6,6 +6,7 @@ function loginUser(event) {
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
 
+
     fetch('http://localhost:8765/user/login', {
         method: 'POST',
         headers: {

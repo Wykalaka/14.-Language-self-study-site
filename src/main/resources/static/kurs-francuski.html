@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurs francuskiego</title>
+    <link rel="stylesheet" href="style_course.css">
+</head>
+<body>
+<div class="header">
+    <a href="index.html">Strona główna</a>
+    <a href="kurs-francuski.html">Kurs francuski</a>
+    <a href="login.html">Zaloguj się</a>
+    <a href="registration.html">Zarejestruj się</a>
+</div>
+
+<div class="container">
+    <h1>Przetłumacz</h1>
+    <div id="question-container">
+        <p id="question"></p>
+    </div>
+    <div id="answers">
+        <div class="answer">
+            <input type="radio" name="answer" id="answer1"><label for="answer1"></label>
+        </div>
+        <div class="answer">
+            <input type="radio" name="answer" id="answer2"><label for="answer2"></label>
+        </div>
+        <div class="answer">
+            <input type="radio" name="answer" id="answer3"><label for="answer3"></label>
+        </div>
+    </div>
+    <div>
+        <button onclick="handleAnswerSelection()">Następne pytanie</button>
+    </div>
+</div>
+
+<script src="script_course_fr.js"></script>
+</body>
+</html>

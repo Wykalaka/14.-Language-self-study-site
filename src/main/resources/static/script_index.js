@@ -1,6 +1,6 @@
 // JavaScript
 let userInfoDiv = document.getElementById('user-info');
-let user = localStorage.getItem('user'); // pobieramy zalogowanego użytkownika z localStorage
+let user = localStorage.getItem('user');
 if (user) {
   userInfoDiv.textContent = `Zalogowany jako: ${user}`;
 } else {
@@ -11,55 +11,53 @@ let loginLink = document.querySelector('.header a[href="login.html"]');
 let registerLink = document.querySelector('.header a[href="registration.html"]');
 
 if (user) {
-  // Jeżeli użytkownik jest zalogowany, zmieniamy tekst i funkcję linku logowania
   loginLink.textContent = 'Wyloguj się';
-  loginLink.href = '#';  // usunięcie linku do strony logowania
+  loginLink.href = '#';
   loginLink.addEventListener('click', function(event) {
-    event.preventDefault(); // zapobiegamy domyślnej akcji kliknięcia linku
-    // Usuwamy informacje o zalogowanym użytkowniku z localStorage
+    event.preventDefault();
     localStorage.removeItem('user');
     localStorage.removeItem('userRole');
-    // Przeładowujemy stronę, aby zmienić pasek nawigacyjny i resztę strony
     location.reload();
   });
-
-  // Usuwamy link do rejestracji
   registerLink.remove();
+}
+
+let userRole = localStorage.getItem('userRole');
+if (userRole == 1) {
+  let navigationDiv = document.querySelector('.header');
+  let manageLink = document.createElement('a');
+  manageLink.href = "manage.html";
+  manageLink.textContent = "Zarządzaj";
+  navigationDiv.appendChild(manageLink);
 }
 
 
 const coursesSection = document.getElementById('courses-section');
 const newCoursesSection = document.getElementById('new-courses-section');
 
-// Dane kursów językowych rozpoczętych przez użytkownika
+
 const ongoingCourses = [
   {
     title: 'Kurs języka angielskiego',
-    description: 'Zacząłeś rozwiązywać zadania z kursu języka angielskiego. Kontynuuj, aby kontynuować naukę.',
-    link: 'kurs-angielski.html' // Dodajemy link do strony docelowego kursu
+    description: 'Kontynuuj  rozwiązywanie zadań z kursu języka angielskiego.',
+    link: 'kurs-angielski.html'
   },
-  {
-    title: 'Kurs języka niemieckiego',
-    description: 'Zacząłeś rozwiązywać zadania z kursu języka niemieckiego. Kontynuuj, aby kontynuować naukę.',
-    link: 'kurs-niemiecki.html' // Dodajemy link do strony docelowego kursu
-  }
 ];
 
-// Dane nowych kursów
+
 const newCourses = [
   {
     title: 'Kurs języka hiszpańskiego',
     description: 'Rozpocznij naukę języka hiszpańskiego i rozwiązuj nowe zadania.',
-    link: 'kurs-hiszpanski.html' // Dodajemy link do strony docelowego kursu
+    link: 'kurs-hiszpanski.html'
   },
   {
     title: 'Kurs języka francuskiego',
     description: 'Rozpocznij naukę języka francuskiego i rozwiązuj nowe zadania.',
-    link: 'kurs-francuski.html' // Dodajemy link do strony docelowego kursu
+    link: 'kurs-francuski.html'
   }
 ];
 
-// Wyświetlanie kursów językowych rozpoczętych
 ongoingCourses.forEach(course => {
   const courseDiv = document.createElement('div');
   courseDiv.className = 'course';
@@ -74,7 +72,6 @@ ongoingCourses.forEach(course => {
   continueButton.className = 'continue-btn';
   continueButton.textContent = 'Kontynuuj';
 
-  // Dodajemy obsługę kliknięcia przycisku "Kontynuuj"
   continueButton.addEventListener('click', () => {
     window.location.href = course.link;
   });
@@ -85,7 +82,7 @@ ongoingCourses.forEach(course => {
   coursesSection.appendChild(courseDiv);
 });
 
-// Wyświetlanie nowych kursów
+
 newCourses.forEach(course => {
   const courseDiv = document.createElement('div');
   courseDiv.className = 'new-course';
@@ -100,7 +97,6 @@ newCourses.forEach(course => {
   startButton.className = 'start-btn';
   startButton.textContent = 'Rozpocznij';
 
-  // Dodajemy obsługę kliknięcia przycisku "Rozpocznij"
   startButton.addEventListener('click', () => {
     window.location.href = course.link;
   });
@@ -111,12 +107,5 @@ newCourses.forEach(course => {
   newCoursesSection.appendChild(courseDiv);
 });
 
-let userRole = localStorage.getItem('userRole'); // pobieramy rolę zalogowanego użytkownika z localStorage
-if (userRole == 1) { // jeśli zalogowany użytkownik ma rolę z id 1
-  let navigationDiv = document.querySelector('.header');
-  let manageLink = document.createElement('a');
-  manageLink.href = "manage.html";
-  manageLink.textContent = "Zarządzaj";
-  navigationDiv.appendChild(manageLink);
-}
+
 
